@@ -1,3 +1,3 @@
 import React from "react";
 
-export default SignUpForm;
+export default Section;
