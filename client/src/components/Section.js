@@ -33,4 +33,4 @@ function Section() {
   );
 }
 
-export default Selection;
+export default Section;
