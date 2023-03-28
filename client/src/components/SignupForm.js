@@ -27,12 +27,26 @@ const onFinish = (values) => {
     autoComplete="off"
   >
       <Form.Item
-      label="Fullname"
-      name="fullname"
+      label="Firstname"
+      name="Firstname"
+      placeholder="First Name"
       rules={[
         {
           required: true,
-          message: 'Please input your full name!',
+          message: 'Please input your first name!',
+        },
+      ]}
+    >
+      <Input />
+    </Form.Item>
+    <Form.Item
+      label="Lastname"
+      name="Lastname"
+      placeholder="Last Name"
+      rules={[
+        {
+          required: true,
+          message: 'Please input your first name!',
         },
       ]}
     >
@@ -42,6 +56,7 @@ const onFinish = (values) => {
     <Form.Item
       label="Username"
       name="username"
+      placeholder="Username"
       rules={[
         {
           required: true,
@@ -55,6 +70,7 @@ const onFinish = (values) => {
     <Form.Item
       label="Password"
       name="password"
+      placeholder="Password"
       rules={[
         {
           required: true,
