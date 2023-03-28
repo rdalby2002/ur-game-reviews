@@ -29,6 +29,7 @@ const onFinish = (values) => {
     <Form.Item
       label="Username"
       name="username"
+      placeholder="Username"
       rules={[
         {
           required: true,
@@ -42,6 +43,7 @@ const onFinish = (values) => {
     <Form.Item
       label="Password"
       name="password"
+      placeholder="Password"
       rules={[
         {
           required: true,
