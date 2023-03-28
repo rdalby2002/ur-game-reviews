@@ -1,5 +1,15 @@
 import React from "react";
 
-export default function TopRated(){
-
+function TopRated(){
+    <Card
+    hoverable
+    style={{
+      width: 240,
+    }}
+    cover={<img alt="NewReleases" />}
+  >
+    <Meta  description={"www.instagram.com"} />
+  </Card>
 };
+
+export default TopRated;
