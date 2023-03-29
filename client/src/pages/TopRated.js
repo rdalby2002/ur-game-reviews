@@ -1,4 +1,5 @@
 import React from "react";
+const { Card } = 'Layout';
 
 function TopRated(){
     <Card
@@ -8,7 +9,7 @@ function TopRated(){
     }}
     cover={<img alt="NewReleases" />}
   >
-    <Meta  description={"www.instagram.com"} />
+
   </Card>
 };
 
