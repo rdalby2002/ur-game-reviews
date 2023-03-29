@@ -4,13 +4,36 @@ import {
   Button
 } from 'antd/es/radio';
 
+// import { QUERY_MAIN } from '../utils/queries';
 
 function Section() {
+  // const { loading, data } = useQuery(QUERY_MAIN);
+  // const main = data?.main || [];
+  const main = {
+    games: [
+      {
+        _id: '12312asldja1',
+        cover: '//images.igdb.com/igdb/image/upload/t_thumb/co2dc0.jpg',
+        name: 'Kingdom Hearts - The Story So Far',
+        rating: 95
+      },
+      {
+        _id: '12312asldja2',
+        cover: '//images.igdb.com/igdb/image/upload/t_thumb/co2dc0.jpg',
+        name: 'Other game',
+        rating: null
+      }
+    ],
+    //some other data ???
+  };
+
   return (
     <div>
       <Carousel autoplay>
         <div>
-          <h3>1</h3>
+          <h3>{main.games.cover }</h3>
+          <p>{main.games.name}</p>
+          <p>{main.games.rating}</p>
         </div>
         <div>
           <h3>2</h3>
