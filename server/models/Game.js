@@ -1,7 +1,7 @@
 const { Schema } = require('mongoose');
 
 const gameSchema = new Schema({
-  title: {
+  name: {
     type: String,
     required: true,
   },
