@@ -1,5 +1,5 @@
 import React from 'react';
-import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client'
+import {ApolloClient, ApolloProvider} from '@apollo/client'
 import { Router, Route, Routes } from 'express';
 
 import Home from './pages/Home';
