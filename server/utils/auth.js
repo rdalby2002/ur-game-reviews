@@ -1,5 +1,5 @@
+require('dotenv').config();
 const jwt = require('jsonwebtoken');
-import apicalypse from 'apicalypse';
 const secret = 'mysecretssshhhhhhh';
 const expiration = '2h';
 
@@ -48,13 +48,13 @@ module.exports = {
         };
         
         // will need to really work on getting this api request right
-        const response = await apicalypse(requestOptions)
+        // const response = await apicalypse(requestOptions)
         // may need to use slug as well as name in case we use em for URL requests
-        .fields(['id,name,first_release_date,cover,rating,summary'])
-        .sort('name', 'desc')
-        .search(`${game}`)
-        .request('/games');
+        // .fields(['id,name,first_release_date,cover,rating,summary'])
+        // .sort('name', 'desc')
+        // .search(`${game}`)
+        // .request('/games');
         
-        return response 
+        // return response 
     }
 };
