@@ -29,7 +29,7 @@ function Section() {
 
   return (
     <div>
-      <Carousel autoplay>
+      {/* <Carousel autoplay>
         <div>
           <h3>{main.games.cover }</h3>
           <p>{main.games.name}</p>
@@ -44,12 +44,12 @@ function Section() {
         <div>
           <h3>4</h3>
         </div>
-      </Carousel>
+      </Carousel> */}
       <p>
         Are you a Twitch streamer looking to showcase the best or newest in the gaming industry? Then look no further than <b>Ur Game Reviews</b>. We are your one stop shop for the latest and greatest! Join our Community to see what the buzz is all about!
       </p>
       <div>
-        <Button type="submit" id="login-btn" class="btn btn-dark">Login!</Button>
+        {/* <Button type="submit" id="login-btn" class="btn btn-dark">Login!</Button> */}
         <a class="btn btn-dark" href='/register'>Register</a>
       </div>
     </div>

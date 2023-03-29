@@ -3,10 +3,28 @@ import {ApolloClient, ApolloProvider} from '@apollo/client'
 import { Router, Route, Routes } from 'express';
 
 import Home from './pages/Home';
+import Signup from './pages/Signup';
+import Login from './pages/Login';
+import Profile from './pages/Profile';
 import Layout from './pages/Layouts/Layout';
-import Navbar from './components/Navbar';
-import NewReleases from './pages/NewReleases';
-import TopRated from './pages/TopRated';
+
+// Construct our main GraphQL API endpoint
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+// Construct request middleware that will attach the JWT token to every request as an `authorization` header
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem('id_token');
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
 
 const client = new ApolloClient({
   request: (operation) => {
@@ -27,25 +45,36 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
-          <Layout />
-          <Navbar>
+          <Layout>
           <div className="container">
             <Routes>
               <Route 
-                path="/" 
-                element={<Home />} 
+                path="/"
+                element={<Home />}
               />
               <Route 
-                path="/toprated" 
-                element={<TopRated />} 
+                path="/login"
+                element={<Login />}
               />
               <Route 
-                path="/newreleases" 
-                element={<NewReleases />} 
+                path="/signup"
+                element={<Signup />}
+              />
+              <Route 
+                path="/toprated"
+                element={<Profile />}
+              />
+              <Route 
+                path="/profiles/:username"
+                element={<Profile />}
+              />
+              <Route 
+                path="/games/:gameId"
+                element={<SingleGame />}
               />
             </Routes>
           </div>
-          </Navbar>
+          </Layout>
         </div>
       </Router>
     </ApolloProvider>

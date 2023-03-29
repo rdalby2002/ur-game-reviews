@@ -1,19 +1,22 @@
 import React from "react";
 // import icons
-const { Sider } = 'Layout';
- 
-function Navbar({ currentPage, handlePageChange }) {
-  //   const [collapsed, setCollapsed] = useState(false);
-  // const {
-  //   token: { colorBgContainer },
-  // } = theme.useToken();
+import { Sider } from 'Layout';
+import { Layout } from 'antd';
+import { useState } from "react";
+
+function Navbar() {
+    const [collapsed, setCollapsed] = useState(false);
+  const {
+    token: { colorBgContainer },
+  } = theme.useToken();
 
   // const logout = (event) => {
   //   event.preventDefault();
   //   Auth.logout();
   // };
   return (
-      <Sider trigger={null} >
+    <Layout>
+      <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="logo" />
         <li className="nav-item">
         <a
@@ -56,6 +59,7 @@ function Navbar({ currentPage, handlePageChange }) {
         </a>
       </li>
       </Sider>
+      </Layout>
   )
 }
 
