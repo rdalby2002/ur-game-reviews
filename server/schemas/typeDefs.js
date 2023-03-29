@@ -21,6 +21,7 @@ const typeDefs = gql`
   }
 
   input GameInput {
+    _id: ID!
     name: String!
     summary: String!
     cover: String
