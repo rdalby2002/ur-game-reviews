@@ -36,8 +36,8 @@ module.exports = {
             baseURL: 'https://api.igdb.com/v4',
             headers: {
                 'Accept': 'application/json',
-                'Client-ID': 'i98gt92fpw1mxgt5x39ffm47s3ehr1',
-                'Authorization': 'Bearer 8haqod3b087geqce4c1oteg8q8wyxr'
+                'Client_ID': process.env.CLIENT_ID,
+                'Authorization': process.env.AUTHORIZATION 
             },
             responseType: 'json',
             timeout: 1000,
