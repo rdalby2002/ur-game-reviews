@@ -2,10 +2,10 @@ import gql from "graphql-tag";
 
 export const LOGIN_USER = gql`
   mutation login(
-  $email: String!, 
+  $username: String!, 
   $password: String!) {
 
-    login(email: $email, 
+    login(username: $username, 
     password: $password) {
       token
       user {
@@ -17,8 +17,8 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_USER = gql`
-  mutation addUser($username: String!, $email: String!, $password: String!) {
-    addUser(username: $username, email: $email, password: $password) {
+  mutation addUser($username: String!, $password: String!) {
+    addUser(username: $username, username: $username, password: $password) {
       token
       user {
         _id
@@ -32,7 +32,6 @@ export const SAVE_GAME = gql`
     saveBook(input: $input) {
       _id
       username
-      email
       savedGames{
       gameId
       description
