@@ -1,14 +1,12 @@
 import React from "react";
 // import icons
-import { Sider } from 'Layout';
 import { Layout } from 'antd';
 import { useState } from "react";
+// import { Auth } from '../utils/Auth';
+const { Sider } = Layout;
 
-function Navbar() {
+function Navbar(handlePageChange, currentPage) {
     const [collapsed, setCollapsed] = useState(false);
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
 
   // const logout = (event) => {
   //   event.preventDefault();
