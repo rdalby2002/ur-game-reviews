@@ -4,6 +4,7 @@ const { signToken, igdbRequest } = require('../utils/auth');
 import apicalypse from 'apicalypse';
 
 const march = new Date('2023-03-01');
+const hypeCount = 100;
 
 const resolvers = {
     Query: {
@@ -23,11 +24,11 @@ const resolvers = {
         },
         // here will go game requests
         // will need to add another request for the covers to get the image url
-        // apicalypse has a multiquery
+        // apicalypse has a multiquery to maybe help with covers 
         topratedgames: async (parent, { games }) => {
             const response = await apicalypse(igdbRequest)
             // may need to use 'slug' for url requests
-            .fields(['id,name,first_release_date,cover,rating,summary'])
+            .fields(['id,name,first_release_date,cover,rating,summary,hypes'])
             .sort('name', 'desc')
             .limit(10)
             .where('rating > 90')
@@ -37,13 +38,14 @@ const resolvers = {
         },
         newreleases: async ( parent, { games }) => {
             const response = await apicalypse(igdbRequest)
-            .fields(['id,name,first_release_date,cover,rating,summary'])
+            .fields(['id,name,first_release_date,cover,rating,summary,hypes'])
             .sort('name', 'desc')
             .limit(10)
+            .where(`hypes > 100`)
             .where(`first_release_date > ${march}`)
             .request('/games');
             
-            return response (games)
+            return response(games)
         },
 
     },
@@ -71,7 +73,7 @@ const resolvers = {
             const token = signToken(profile);
             return { token, profile };
         },
-        addGame: async (parent, {})
+        saveGame: async (parent, {})
     }
 };
 
