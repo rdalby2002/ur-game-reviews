@@ -27,7 +27,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    savedGames: [gameSchema],
+    savedGames: [Game],
   },
   {
     toJSON: {

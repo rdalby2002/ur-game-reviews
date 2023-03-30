@@ -1,4 +1,4 @@
-const { Schema } = require('mongoose');
+const { Schema, default: mongoose } = require('mongoose');
 
 const gameSchema = new Schema({
   name: {
@@ -12,6 +12,9 @@ const gameSchema = new Schema({
   cover: {
     type: String,
   },
+  hypes: {
+    type: String,
+  },
   first_release_date: {
     type: Date,
   },
@@ -21,4 +24,6 @@ const gameSchema = new Schema({
   },
 });
 
-module.exports - gameSchema;
+const Game = mongoose.model('Game', gameSchema);
+
+module.exports - Game;
