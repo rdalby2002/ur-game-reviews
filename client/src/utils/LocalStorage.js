@@ -1,7 +1,7 @@
 //wishlist
 // export const getSavedGameIds = () => {
-//     const savedGameIds = localStorage.getItem('saved_gamess')
-//       ? JSON.parse(localStorage.getItem('saved_gamess'))
+//     const savedGameIds = localStorage.getItem('saved_games')
+//       ? JSON.parse(localStorage.getItem('saved_games'))
 //       : [];
   
 //     return savedGameIds;
