@@ -1,5 +1,6 @@
 import React from "react";
 // import icons
+import 'antd/dist/reset.css';
 import { Layout } from 'antd';
 import { useState } from "react";
 // import { Auth } from '../utils/Auth';

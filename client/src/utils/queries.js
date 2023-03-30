@@ -47,4 +47,24 @@ export const QUERY_MAIN = gql`
       name
       rating
       }
-    }`
+    }
+    `;
+
+    export const GET_MYGAMES = gql`
+      query myGames {
+        me {
+          _id
+          username
+          email
+          gameCount
+          savedGames {
+          gameId
+          title
+          description
+          image
+          link
+          }
+        }
+      }
+    `;
+    
