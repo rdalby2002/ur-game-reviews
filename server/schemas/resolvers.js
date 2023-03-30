@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User } = require('../models/User');
+const { User, Game } = require('../models');
 const { signToken, igdbRequest } = require('../utils/auth');
 import apicalypse from 'apicalypse';
 
@@ -41,7 +41,7 @@ const resolvers = {
             .fields(['id,name,first_release_date,cover,rating,summary,hypes'])
             .sort('name', 'desc')
             .limit(10)
-            .where(`hypes > 100`)
+            .where(`hypes > ${hypeCount}`)
             .where(`first_release_date > ${march}`)
             .request('/games');
             
@@ -73,7 +73,26 @@ const resolvers = {
             const token = signToken(profile);
             return { token, profile };
         },
-        saveGame: async (parent, {})
+        // this saveGame needs lots of editing
+        saveGame: async (parent, { newGame }, context) => {
+            if (context.user) {
+                const game = new Game
+            }
+        },
+        removeGame: async (parent, { gameId }, context) => {
+            if (context.user) {
+                const game = await Game.findOneAndDelete({
+                    _id: gameId,
+                });
+
+                await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $pull: { games: game._id } }
+                );
+
+                return game;
+            }
+        }
     }
 };
 
