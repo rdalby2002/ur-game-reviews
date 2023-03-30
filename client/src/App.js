@@ -1,12 +1,20 @@
 import React from 'react';
-import {ApolloClient, ApolloProvider} from '@apollo/client'
-import { Router, Route, Routes } from 'express';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
-import Signup from './pages/Signup';
-import Login from './pages/Login';
-import Profile from './pages/Profile';
+import SignupForm from './components/SignupForm';
+import LoginForm from './components/LoginForm';
+import TopRated from './pages/TopRated';
+import Dashboard from './pages/Dashboard';
 import Layout from './pages/Layouts/Layout';
+
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -27,56 +35,47 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const client = new ApolloClient({
-  request: (operation) => {
-    const token = localStorage.getItem('id_token');
-    
-    operation.setContext({
-      headers: {
-        authorization: token ? `Bearer ${token}` : ""
-      }
-    });
-  },
-  uri: "/graphql"
+  // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
 });
-
 
 function App() {
   return (
     <ApolloProvider client={client}>
+      <Layout>
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
-          <Layout>
+          
           <div className="container">
             <Routes>
               <Route 
-                path="/"
-                element={<Home />}
+                exact path="/"
+                element ={<Home />}
               />
               <Route 
                 path="/login"
-                element={<Login />}
+                element={<LoginForm />}
               />
               <Route 
                 path="/signup"
-                element={<Signup />}
+                element={<SignupForm />}
               />
               <Route 
                 path="/toprated"
-                element={<Profile />}
+                element={<TopRated />}
               />
               <Route 
                 path="/profiles/:username"
-                element={<Profile />}
+                element={<Dashboard />}
               />
-              <Route 
-                path="/games/:gameId"
-                element={<SingleGame />}
-              />
+            
             </Routes>
           </div>
-          </Layout>
+         
         </div>
       </Router>
+      </Layout>
     </ApolloProvider>
   );
 }
