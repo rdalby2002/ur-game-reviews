@@ -72,8 +72,8 @@ function Section() {
       </div>
 
       <div>
-      <Button className="loginBtn"  href="./LoginForm" variant="dark">Login!</Button> {' '}
-      <Button className="signuptBtn" href="./SignupForm" variant="dark">Sign up!</Button>
+      <Button className="loginBtn"  href="/login" variant="dark">Login!</Button> {' '}
+      <Button className="signuptBtn" href="/signup" variant="dark">Sign up!</Button>
       </div>
     </div>
   );
