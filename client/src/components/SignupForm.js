@@ -1,5 +1,7 @@
 import React from 'react';
-import { Button, Form, Input} from 'antd';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+
 const onFinish = (values) => {
     console.log('Success:', values);
   };
@@ -7,101 +9,45 @@ const onFinish = (values) => {
     console.log('Failed:', errorInfo);
   };
 
-  function SignupForm() {
+
+
+function SignupForm() {
+  return (
     <Form
-    name="basic"
-    labelCol={{
-      span: 8,
-    }}
-    wrapperCol={{
-      span: 16,
-    }}
-    style={{
-      maxWidth: 600,
-    }}
-    initialValues={{
-      remember: true,
-    }}
     onFinish={onFinish}
     onFinishFailed={onFinishFailed}
     autoComplete="off"
-  >
-      <Form.Item
-      label="Firstname"
-      name="Firstname"
-      placeholder="First Name"
-      rules={[
-        {
-          required: true,
-          message: 'Please input your first name!',
-        },
-      ]}
     >
-      <Input />
-    </Form.Item>
-    <Form.Item
-      label="Lastname"
-      name="Lastname"
-      placeholder="Last Name"
-      rules={[
-        {
-          required: true,
-          message: 'Please input your first name!',
-        },
-      ]}
-    >
-      <Input />
-    </Form.Item>
+      <Form.Group className="mb-3" controlId="firstname">
+        <Form.Label>First Name</Form.Label>
+        <Form.Control type="email" placeholder="Enter first name" />
+      </Form.Group>
 
-    <Form.Item
-      label="Username"
-      name="username"
-      placeholder="Username"
-      rules={[
-        {
-          required: true,
-          message: 'Please input your username!',
-        },
-      ]}
-    >
-      <Input />
-    </Form.Item>
+      <Form.Group className="mb-3" controlId="lastname">
+        <Form.Label>Last Name</Form.Label>
+        <Form.Control type="lastname" placeholder="Enter last name" />
+      </Form.Group>
 
-    <Form.Item
-      label="Password"
-      name="password"
-      placeholder="Password"
-      rules={[
-        {
-          required: true,
-          message: 'Please input your password!',
-        },
-      ]}
-    >
-      <Input.Password />
-    </Form.Item>
+      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Email address</Form.Label>
+        <Form.Control type="email" placeholder="Enter email" />
+        <Form.Text className="text-muted">
+          We'll never share your email with anyone else.
+        </Form.Text>
+      </Form.Group>
 
-    <Form.Item
-      name="remember"
-      valuePropName="checked"
-      wrapperCol={{
-        offset: 8,
-        span: 16,
-      }}
-    >
-    </Form.Item>
-
-    <Form.Item
-      wrapperCol={{
-        offset: 8,
-        span: 16,
-      }}
-    >
-      <Button type="primary" htmlType="submit">
+      <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Label>Password</Form.Label>
+        <Form.Control type="password" placeholder="Password" />
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="formBasicCheckbox">
+        <Form.Check type="checkbox" label="Check me out" />
+      </Form.Group>
+      <Button variant="primary" type="submit">
         Submit
       </Button>
-    </Form.Item>
-  </Form>
-  }
+    </Form>
+  );
+}
 
-  export default SignupForm;
+export default SignupForm;

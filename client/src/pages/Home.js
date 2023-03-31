@@ -3,7 +3,6 @@ import Section from '../components/Section';
 
 
 
-
 function Home() {
   return (
     <main className="">
