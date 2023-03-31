@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react';
 import {
   Container,
   Card,
-  CardColumns,
+  Col,
   Button,
-  Jumbotron,
+  Row,
 } from 'react-bootstrap';
 
 import { GET_ME } from '../utils/queries';
 import { REMOVE_GAME } from '../utils/mutations'
 import { useQuery, useMutation } from '@apollo/react-hooks';
-import Auth from '../utils/auth';
+import Auth from '../utils/Auth';
 
-import { removeGameId } from '../utils/localStorage';
+import { removeGameId } from '../utils/LocalStorage';
 
 
 const SavedGames = () => {
@@ -50,20 +50,21 @@ const SavedGames = () => {
 
   return (
     <>
-      <Jumbotron fluid className='text-light bg-dark'>
+      <div fluid className='text-light bg-dark'>
         <Container>
           <h1>Viewing favorites list!</h1>
         </Container>
-      </Jumbotron>
+      </div>
       <Container>
         <h2 className='pt-5'>
           {userData.savedGames.length
             ? `Viewing ${userData.savedGames.length} saved ${userData.savedGames.length === 1 ? 'game' : 'games'}:`
             : 'You have no saved games!'}
         </h2>
-        <CardColumns>
+        <Row>
           {userData.savedGames.map((game) => {
             return (
+                <Col md= "4">
                 <Card key={game.gameId} border='dark'>
                   {game.image ? <Card.Img src={game.image} variant='top' /> : null}
                   <Card.Body>
@@ -75,9 +76,10 @@ const SavedGames = () => {
                     </Button>
                   </Card.Body>
                 </Card>
+                </Col>
             );
           })}
-        </CardColumns>
+        </Row>
       </Container>
     </>
   );
