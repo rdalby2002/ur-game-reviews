@@ -17,7 +17,7 @@ import TopRated from './pages/TopRated';
 import Dashboard from './pages/Dashboard';
 import Layout from './pages/Layouts/Layout';
 import SavedGames from './pages/SavedGames';
-
+import NewReleases from './pages/NewReleases'
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
