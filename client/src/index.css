@@ -12,7 +12,21 @@ code {
     monospace;
 }
 
-.header {
-  flex: auto;
-  justify-content: center;
+.center {
+  margin: auto;
+  width: 60%;
+  padding: 10px;
+  background: transparent;
+}
+
+.carousel{
+  margin: auto;
+  width: 60%;
+  padding: 10px;
+  background: transparent;
+  }
+
+  body { 
+    background-image: url("./assets/images/gamingbackdrop.jpg"); 
+    background-size: cover;
   }

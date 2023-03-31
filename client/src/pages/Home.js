@@ -5,9 +5,7 @@ import Section from '../components/Section';
 
 function Home() {
   return (
-    <main className="">
-      <div> <Section /> </div>
-    </main>
+      <div className='center'> <Section /> </div>
   );
 }
 
