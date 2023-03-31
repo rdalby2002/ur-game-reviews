@@ -17,7 +17,7 @@ import TopRated from './pages/TopRated';
 import Dashboard from './pages/Dashboard';
 import Layout from './pages/Layouts/Layout';
 import SavedGames from './pages/SavedGames';
-
+import NewReleases from './pages/NewReleases'
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -65,18 +65,21 @@ function App() {
                 element={<SignupForm />}
               />
               <Route 
+                path="/dashboard"
+                element={<Dashboard />}
+              />
+              <Route 
                 path="/toprated"
                 element={<TopRated />}
               />
-              <Route 
-                path="/profiles/:username"
-                element={<Dashboard />}
+                <Route 
+                path="/newreleases"
+                element={<NewReleases />}
               />
               <Route 
               path='/saved' 
               element={<SavedGames />} 
-             />
-            
+             />     
             </Routes>
           </div>
         </div>
