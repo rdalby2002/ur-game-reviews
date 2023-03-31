@@ -16,6 +16,7 @@ const typeDefs = gql`
     name: String!
     summary: String!
     cover: String
+    hypes: Int
     first_release_date: Date
     rating: Int!
   }

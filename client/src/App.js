@@ -8,7 +8,6 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import 'antd/dist/reset.css';
 import './App.css';
 
 import Home from './pages/Home';
@@ -17,6 +16,7 @@ import LoginForm from './components/LoginForm';
 import TopRated from './pages/TopRated';
 import Dashboard from './pages/Dashboard';
 import Layout from './pages/Layouts/Layout';
+import SavedGames from './pages/SavedGames';
 
 
 // Construct our main GraphQL API endpoint
@@ -72,6 +72,10 @@ function App() {
                 path="/profiles/:username"
                 element={<Dashboard />}
               />
+              <Route 
+              path='/saved' 
+              element={<SavedGames />} 
+             />
             
             </Routes>
           </div>

@@ -13,7 +13,7 @@ const gameSchema = new Schema({
     type: String,
   },
   hypes: {
-    type: String,
+    type: Number,
   },
   first_release_date: {
     type: Date,
