@@ -75,7 +75,6 @@ function App() {
             
             </Routes>
           </div>
-         
         </div>
       </Router>
       </Layout>
