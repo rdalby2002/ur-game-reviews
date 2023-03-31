@@ -1,8 +1,7 @@
 import React from 'react';
-import { Carousel } from 'antd';
-import {
-  Button
-} from 'antd/es/radio';
+import Carousel from 'react-bootstrap/Carousel';
+import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
 // import { QUERY_MAIN } from '../utils/queries';
 
@@ -29,19 +28,52 @@ function Section() {
 
   return (
     <div>
-      {/* <Carousel autoplay>
-        <div>
-          <h3>{main.games.cover }</h3>
-          <p>{main.games.name}</p>
+     <Carousel fade>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={main.games.cover}
+          alt="First slide"
+        />
+        <Carousel.Caption>
+          <h3>{main.games.title}</h3>
           <p>{main.games.rating}</p>
-        </div>
-      </Carousel> */}
+        </Carousel.Caption>
+      </Carousel.Item>
+
+      {/* <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={cover}
+          alt="First slide"
+        />
+        <Carousel.Caption>
+          <h3>{title}</h3>
+          <p>{rating}</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={cover}
+          alt="First slide"
+        />
+        <Carousel.Caption>
+          <h3>{title}</h3>
+          <p>{rating}</p>
+        </Carousel.Caption>
+      </Carousel.Item> */}
+
+    </Carousel>
       <p>
         Are you a Twitch streamer looking to showcase the best or newest in the gaming industry? Then look no further than <b>Ur Game Reviews</b>. We are your one stop shop for the latest and greatest! Join our Community to see what the buzz is all about!
       </p>
       <div>
-      <a class="btn btn-dark" href='/login'>Login</a>
-        <a class="btn btn-dark" href='/register'>Register</a>
+      <ButtonGroup aria-label="Basic example">
+      <Button className="loginBtn"  href="./LoginForm" variant="secondary">Login!</Button>
+      <Button className="signuptBtn" href="./SignupForm" variant="secondary">Sign up!</Button>
+    </ButtonGroup>
       </div>
     </div>
   );
