@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import {
   Container,
   Card,
+  CardColumns,
   Button,
-  Row,
-  Col
+  Jumbotron,
 } from 'react-bootstrap';
 
 import { GET_ME } from '../utils/queries';
@@ -29,15 +29,14 @@ const SavedGames = () => {
     }
 
     try {
-      const response = await await removeGame({
+      const response = await removeGame({
         variables: {gameId: gameId}
       });
 
       if (!response) {
-        throw ('something went wrong!');
+        throw new Error ('something went wrong!');
       }
 
-      
       removeGameId(gameId);
     } catch (err) {
       console.error(err);
@@ -51,21 +50,20 @@ const SavedGames = () => {
 
   return (
     <>
-      <div fluid className='text-light bg-dark p-5'>
+      <Jumbotron fluid className='text-light bg-dark'>
         <Container>
           <h1>Viewing favorites list!</h1>
         </Container>
-      </div>
+      </Jumbotron>
       <Container>
         <h2 className='pt-5'>
           {userData.savedGames.length
             ? `Viewing ${userData.savedGames.length} saved ${userData.savedGames.length === 1 ? 'game' : 'games'}:`
             : 'You have no saved games!'}
         </h2>
-        <Row>
+        <CardColumns>
           {userData.savedGames.map((game) => {
             return (
-              <Col md="4">
                 <Card key={game.gameId} border='dark'>
                   {game.image ? <Card.Img src={game.image} variant='top' /> : null}
                   <Card.Body>
@@ -77,10 +75,9 @@ const SavedGames = () => {
                     </Button>
                   </Card.Body>
                 </Card>
-              </Col>
             );
           })}
-        </Row>
+        </CardColumns>
       </Container>
     </>
   );
