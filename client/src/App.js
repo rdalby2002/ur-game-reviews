@@ -65,18 +65,21 @@ function App() {
                 element={<SignupForm />}
               />
               <Route 
+                path="/dashboard"
+                element={<Dashboard />}
+              />
+              <Route 
                 path="/toprated"
                 element={<TopRated />}
               />
-              <Route 
-                path="/profiles/:username"
-                element={<Dashboard />}
+                <Route 
+                path="/newreleases"
+                element={<NewReleases />}
               />
               <Route 
               path='/saved' 
               element={<SavedGames />} 
-             />
-            
+             />     
             </Routes>
           </div>
         </div>
