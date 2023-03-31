@@ -31,8 +31,7 @@ module.exports = {
     igdbRequest:  async function (token) {
         const requestOptions = {
             queryMethod: 'url',
-            // method might have to be get?
-            method: 'post',
+            method: 'get',
             baseURL: 'https://api.igdb.com/v4',
             headers: {
                 'Accept': 'application/json',

@@ -1,9 +1,10 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Game } = require('../models');
 const { signToken, igdbRequest } = require('../utils/auth');
-import apicalypse from 'apicalypse';
+//import apicalypse from 'apicalypse';
+const apicalypse = require('apicalypse');
 
-const march = new Date('2023-03-01');
+let march = new Date('2023-03-01');
 const hypeCount = 100;
 
 const resolvers = {
