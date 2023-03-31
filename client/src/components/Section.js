@@ -27,7 +27,7 @@ function Section() {
   };
 
   return (
-    <div>
+    <div className="carousel">
      <Carousel fade>
       <Carousel.Item>
         <img
