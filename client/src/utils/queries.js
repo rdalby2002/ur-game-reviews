@@ -50,8 +50,8 @@ export const QUERY_MAIN = gql`
     }
     `;
 
-    export const GET_MYGAMES = gql`
-      query myGames {
+    export const GET_ME = gql`
+      query me {
         me {
           _id
           username
