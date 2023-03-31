@@ -72,6 +72,10 @@ function App() {
                 path="/profiles/:username"
                 element={<Dashboard />}
               />
+              <Route 
+              path='/saved' 
+              element={<SavedGames />} 
+             />
             
             </Routes>
           </div>
