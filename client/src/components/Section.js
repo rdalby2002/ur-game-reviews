@@ -1,7 +1,6 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import Button from 'react-bootstrap/Button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
 // import { QUERY_MAIN } from '../utils/queries';
 
@@ -66,14 +65,15 @@ function Section() {
       </Carousel.Item> */}
 
     </Carousel>
+    <div className='info'>
       <p>
         Are you a Twitch streamer looking to showcase the best or newest in the gaming industry? Then look no further than <b>Ur Game Reviews</b>. We are your one stop shop for the latest and greatest! Join our Community to see what the buzz is all about!
       </p>
+      </div>
+
       <div>
-      <ButtonGroup aria-label="Basic example">
-      <Button className="loginBtn"  href="./LoginForm" variant="secondary">Login!</Button>
-      <Button className="signuptBtn" href="./SignupForm" variant="secondary">Sign up!</Button>
-    </ButtonGroup>
+      <Button className="loginBtn"  href="./LoginForm" variant="dark">Login!</Button> {' '}
+      <Button className="signuptBtn" href="./SignupForm" variant="dark">Sign up!</Button>
       </div>
     </div>
   );

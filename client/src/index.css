@@ -13,6 +13,8 @@ code {
 }
 
 .center {
+  display: flex;
+  justify-content: center;
   margin: auto;
   width: 60%;
   padding: 10px;
@@ -29,4 +31,13 @@ code {
   body { 
     background-image: url("./assets/images/gamingbackdrop.jpg"); 
     background-size: cover;
+  }
+
+  .social {
+  display: flex;
+  justify-content: space-evenly;
+  }
+
+  .info{
+color: white;
   }
