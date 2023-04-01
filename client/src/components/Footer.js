@@ -3,14 +3,10 @@ import { SocialIcon } from 'react-social-icons'
 
 function Footer() {
   return (
-    <footer>
-       <div className="center">
-          <p className="social">
+    <footer className="center">
           <SocialIcon url="https://twitter.com/" />
           <SocialIcon url="https://www.instagram.com/" />
           <SocialIcon url="https://www.twitch.com/" />
-       </p>
-      </div>
     </footer>
   );
 }
