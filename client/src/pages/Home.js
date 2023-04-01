@@ -5,7 +5,10 @@ import Section from '../components/Section';
 
 function Home() {
   return (
-      <div className='center'> <Section /> </div>
+    <div className='center'>
+      <p>
+        < Section />
+      </p> </div>
   );
 }
 
