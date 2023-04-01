@@ -5,7 +5,6 @@ export const QUERY_USER = gql`
     user(username: $username) {
       _id
       username
-      email
       games {
         _id
       }
@@ -55,7 +54,6 @@ export const QUERY_MAIN = gql`
         me {
           _id
           username
-          email
           gameCount
           savedGames {
           gameId
