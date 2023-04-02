@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { useNavigate} from 'react-router-dom';
 
 const onFinish = (values) => {
     console.log('Success:', values);
@@ -10,7 +11,11 @@ const onFinish = (values) => {
   };
 
 function LoginForm() {
+  const navigate = useNavigate();
+  
   return (
+    <div>
+
     <Form
     onFinish={onFinish}
     onFinishFailed={onFinishFailed}
@@ -26,13 +31,14 @@ function LoginForm() {
         <Form.Label>Password</Form.Label>
         <Form.Control type="password" placeholder="Password" />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
-      </Form.Group>
-      <Button variant="primary" type="submit">
+
+      <Button variant="dark" type="submit" onClick={() => navigate("/dashboard")}>
         Welcome!
       </Button>
+      {' '}
+      <Button variant='dark' onClick={() => navigate(-1)}>Go back</Button>
     </Form>
+    </div>
   );
 }
 
