@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
   Container,
   Card,
@@ -7,6 +7,7 @@ import {
   Row,
 } from 'react-bootstrap';
 
+import Navbar from '../components/Navbar';
 import { GET_ME } from '../utils/queries';
 import { REMOVE_GAME } from '../utils/mutations'
 import { useQuery, useMutation } from '@apollo/react-hooks';
@@ -18,7 +19,7 @@ import { removeGameId } from '../utils/LocalStorage';
 const SavedGames = () => {
   const { loading, data } = useQuery(GET_ME);
   const userData = data?.me || [];
-  const [ removeGame, { error }] = useMutation(REMOVE_GAME);
+  const [ removeGame ] = useMutation(REMOVE_GAME);
 
 
   const handleDeleteGame = async (gameId) => {
@@ -49,6 +50,8 @@ const SavedGames = () => {
   }
 
   return (
+    <div> 
+      <Navbar />
     <>
       <div fluid className='text-light bg-dark'>
         <Container>
@@ -82,6 +85,8 @@ const SavedGames = () => {
         </Row>
       </Container>
     </>
+
+    </div>
   );
 };
 
