@@ -21,23 +21,62 @@ code {
   background: transparent;
 }
 
-.carousel{
+.carousel {
   margin: auto;
   width: 60%;
   padding: 10px;
   background: transparent;
-  }
+}
 
-  body { 
-    background-image: url("./assets/images/gamingbackdrop.jpg"); 
-    background-size: cover;
-  }
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
 
-  .social {
-  display: flex;
-  justify-content: space-evenly;
-  }
+body {
+  background-image: url("./assets/images/gamingbackdrop1.jpg");
+  background-size: cover;
+}
 
-  .info{
-color: white;
-  }
+
+.info {
+  color: white;
+}
+
+a {
+  padding: 20px 5px;
+}
+
+Form {
+  width: 50%;
+  margin: auto;
+}
+
+.header {
+  margin-top: 5%;
+  margin-bottom: 10%;
+}
+
+.navinfo {
+  color: white;
+  flex-direction: column;
+  cursor: default;
+}
+
+a:hover {
+  color: purple !important;
+}
+
+a,
+u {
+  text-decoration: none !important;
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
+}
