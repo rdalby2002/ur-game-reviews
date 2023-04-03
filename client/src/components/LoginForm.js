@@ -12,24 +12,6 @@ function LoginForm() {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
 
-  const CheckTextInput = (event) => {
-    const blurredEl = event.target.getAttribute("id");
-
-    if (blurredEl === "username") {
-      // error
-      alert('Please enter a username!')
-      return;
-    } else if (blurredEl === "password") {
-      // error
-      alert('Please enter your password!')
-      return;
-    }
-
-    //Checked Successfully
-    //Do whatever you want
-    alert('Success');
-  };
-
   function encode(data) {
     return Object.keys(data)
       .map(
@@ -38,10 +20,9 @@ function LoginForm() {
       .join("&");
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  function LoginUser() {
 
-    if ( username === '' || password === '') {
+     if ( username === '' || password === '') {
       // error
       alert("Please input requested information above!")
       return;
@@ -56,26 +37,38 @@ function LoginForm() {
       .catch((error) => alert(error));
   }
 
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    try {
+      await LoginUser()
+      navigate("/dashboard")
+    } catch (error) {
+      navigate("/login")
+    }
+
+  }
+
   return (
     <div>
 
-    <Form>
+    <Form onSubmit={handleSubmit}>
 
       <Form.Group onSubmit={handleSubmit} className="mb-3" controlId="username">
-        <Form.Label>Username</Form.Label>
-        <Form.Control type="username" placeholder="username" onBlur={CheckTextInput} onChange={(e) => setUsername(e.target.value)} />
+        <Form.Label className='info'>Username</Form.Label>
+        <Form.Control type="text" required placeholder="username" onChange={(e) => setUsername(e.target.value)} />
       </Form.Group>
 
       <Form.Group onSubmit={handleSubmit} className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control  type="password" placeholder="password" onBlur={CheckTextInput} onChange={(e) => setPassword(e.target.value)} />
+        <Form.Label className='info'>Password</Form.Label>
+        <Form.Control  type="password" required placeholder="password" onChange={(e) => setPassword(e.target.value)} />
       </Form.Group>
 
-      <Button variant="dark" type="submit" onClick={() => navigate("/dashboard")}>
+      <Button variant="dark" className='button' type="submit">
         Welcome!
       </Button>
       {' '}
-      <Button variant='dark' onClick={() => navigate(-1)}>Go back</Button>
+      <Button variant='dark' className='button' onClick={() => navigate(-1)}>Go back</Button>
     </Form>
     </div>
 
