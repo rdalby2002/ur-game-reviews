@@ -2,6 +2,8 @@ require('dotenv').config();
 const jwt = require('jsonwebtoken');
 const secret = 'mysecretssshhhhhhh';
 const expiration = '2h';
+const axios = require('axios');
+// const { response } = require('express');
 
 module.exports = {
     authMiddleware: function ({ req }) {
@@ -28,23 +30,42 @@ module.exports = {
         const payload = { email, name, password };
         return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
     },
-    igdbRequest:  async function (token) {
-        const requestOptions = {
-            queryMethod: 'url',
+    igdbRequest:  async function (email, password) {
+        let requestOptions = await axios({
             method: 'get',
-            baseURL: 'https://api.igdb.com/v4',
-            headers: {
-                'Accept': 'application/json',
-                'Client_ID': process.env.CLIENT_ID,
-                'Authorization': process.env.AUTHORIZATION 
-            },
-            responseType: 'json',
-            timeout: 1000,
+            url: 'https://api.igdb.com/v4/games',
             auth: {
-            email: token.email,
-            password: token.password
+                email: email,
+                password: token.password
             },
-        };
+            headers: {
+                'accept': 'application/json',
+                'Client_ID': process.env.CLIENT_ID,
+                'Authorization': process.env.AUTHORIZATION
+            }
+        });
+        // axios(requestOptions)
+        // .then((response) => {
+        //     return(response.data);
+        // })
+        // .catch(error => {
+        //     return error;
+        // });
+        // const requestOptions =  {
+        //     method: 'url',
+        //     baseURL: 'https://api.igdb.com/v4',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Client_ID': process.env.CLIENT_ID,
+        //         'Authorization': process.env.AUTHORIZATION 
+        //     },
+        //     responseType: 'json',
+        //     timeout: 1000,
+        //     auth: {
+        //     email: token.email,
+        //     password: token.password
+        //     },
+        // };
         
         // will need to really work on getting this api request right
         // const response = await apicalypse(requestOptions)
