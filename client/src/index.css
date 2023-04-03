@@ -54,11 +54,6 @@ Form {
   margin: auto;
 }
 
-.header {
-  margin-top: 5%;
-  margin-bottom: 10%;
-}
-
 .navinfo {
   color: white;
   flex-direction: column;
@@ -79,4 +74,12 @@ a:visited,
 a:hover,
 a:active {
   color: inherit;
+}
+
+input {
+  height: 30px;
+}
+
+.button {
+  height: 30px;;
 }
