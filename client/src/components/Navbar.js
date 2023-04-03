@@ -20,7 +20,7 @@ function Navbar() {
       <a href="/favorites">
       <img className="pslogos" alt="circle" src={Circle}></img>
         Favorites</a>
-      <a href="/logout">
+      <a href="/">
       <img className="pslogos" alt="x" src={X}></img>
         Logout</a>
     </Nav>

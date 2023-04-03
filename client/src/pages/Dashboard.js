@@ -10,7 +10,7 @@ function Dashboard() {
             <main className="">
                 <div> <Navbar /> </div>
             </main>
-            <di>
+            <div>
                
                 
                     <Routes>
@@ -21,7 +21,7 @@ function Dashboard() {
                     </Routes>
             
                
-            </di>
+            </div>
         </>
     );
 }
