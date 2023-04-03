@@ -15,10 +15,15 @@ const typeDefs = gql`
     _id: ID!
     name: String!
     summary: String!
-    cover: String
+    cover: [Cover]
     hypes: Int
-    first_release_date: Date
+    first_release_date: String
     rating: Int!
+  }
+
+  type Cover {
+    _id: ID!
+    url: String!
   }
 
   input GameInput {
@@ -26,7 +31,7 @@ const typeDefs = gql`
     name: String!
     summary: String!
     cover: String
-    first_release_date: Date
+    first_release_date: String
     rating: Int!
   }
 
@@ -37,6 +42,10 @@ const typeDefs = gql`
 
   type Query {
     me: User
+    users: User
+    user: User
+    topratedgames: [String]
+    newreleases: [String]
   }
 
   type Mutation {

@@ -1,4 +1,5 @@
 const { Schema, default: mongoose } = require('mongoose');
+const Cover = require('./Cover');
 
 const gameSchema = new Schema({
   name: {
@@ -9,9 +10,7 @@ const gameSchema = new Schema({
     type: String,
     required: true,
   },
-  cover: {
-    type: String,
-  },
+  cover: [Cover],
   hypes: {
     type: Number,
   },
@@ -26,4 +25,4 @@ const gameSchema = new Schema({
 
 const Game = mongoose.model('Game', gameSchema);
 
-module.exports - Game;
+module.exports = Game;
