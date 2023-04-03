@@ -6,9 +6,9 @@ import Section from '../components/Section';
 function Home() {
   return (
     <div className='center'>
-      <p>
+      
         < Section />
-      </p> </div>
+     </div>
   );
 }
 
