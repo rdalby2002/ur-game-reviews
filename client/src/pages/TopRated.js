@@ -1,6 +1,7 @@
 import React, { useEffect, useState }  from "react";
 import { QUERY_NEW , getSavedGameIds} from "../utils/queries";
 import Auth from '../utils/Auth';
+
 import { useQuery, useMutation } from '@apollo/client';
 import Button from 'react-bootstrap/Button';
 import { Card, Row, Col } from 'react-bootstrap';
@@ -128,7 +129,6 @@ function TopRated() {
 
 
   </>
-    
 
   );
 }

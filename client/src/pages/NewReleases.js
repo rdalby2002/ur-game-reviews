@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { GET_ME, getSavedGameIds } from "../utils/queries";
 import Auth from '../utils/Auth';
 import Button from 'react-bootstrap/Button';
+
 import { Card, Row, Col } from 'react-bootstrap';
 import Navbar from "../components/Navbar";
+
 
 
 function NewReleases() {
