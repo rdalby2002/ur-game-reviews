@@ -65,8 +65,8 @@ const resolvers = {
                 baseURL: 'https://api.igdb.com/v4',
                 headers: {
                     'Accept': 'application/json',
-                    'Client-ID': process.env.CLIENT_ID,
-                    'Authorization': process.env.AUTHORIZATION
+                    'Client-ID': 'i98gt92fpw1mxgt5x39ffm47s3ehr1',
+                    'Authorization': 'Bearer 8haqod3b087geqce4c1oteg8q8wyxr'
                 },
                 responseType: 'json',
                 timeout: 1000,
@@ -88,8 +88,8 @@ const resolvers = {
             baseURL: 'https://api.igdb.com/v4',
             headers: {
                 'Accept': 'application/json',
-                'Client-ID': process.env.CLIENT_ID,
-                'Authorization': process.env.AUTHORIZATION
+                'Client-ID': 'i98gt92fpw1mxgt5x39ffm47s3ehr1',
+                'Authorization':  'Bearer 8haqod3b087geqce4c1oteg8q8wyxr'
             },
             responseType: 'json',
             timeout: 1000,
@@ -98,7 +98,7 @@ const resolvers = {
         const response = await apicalypse(options)
         .fields('name,hypes,cover,summary,first_release_date')
         .limit(15)
-        .where('hypes > 20')
+        .where('hypes > 20 & first_release_date > 1677637978')
         .request('/games');
 
 
