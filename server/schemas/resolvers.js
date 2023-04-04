@@ -6,6 +6,17 @@ const axios = require('axios');
 const { request } = require('express');
 const { response } = require('express');
 
+// const { QUERY_TOPGAMES, QUERY_NEW } = require('../../client/src/utils/queries');
+// const topRatedQuery = {
+//     operationName:"fetchQUERY_TOP_GAMES",
+//     query: `query fetchQUERY_TOP_GAMES ${QUERY_TOP_GAMES}`,
+//     variables: {}
+// };
+// const newReleaseQuery = {
+//     operationName: "fetchQUERY_NEW",
+//     query: `query fetchQUERY_NEW ${QUERY_NEW}`,
+//     variables: {}
+// };
 let march = new Date('2023-03-01');
 
 // let requestOptions = async function () {
@@ -28,7 +39,9 @@ let march = new Date('2023-03-01');
 const resolvers = {
     Query: {
         users: async () => {
-            return User.find();
+            const users = await User.find({});
+            // console.log('what is happening', users);
+            return users;
         },
 
         user: async (parent, { userId }) => {
@@ -44,22 +57,33 @@ const resolvers = {
         // here will go game requests
         // will need to add another request for the covers to get the image url
         // apicalypse has a multiquery to maybe help with covers 
-        topratedgames: async (parent, { games }) => {
-            //let march = new Date('2023-03-01');
+        getTopRated: async (parent, args, context) => {
             // may need to use 'slug' for url requests
-            
+            if (context.user) { 
+                const options = {
+                    method: 'post',
+                    url: 'https://api.igdb.com/v4/games',
+                    headers: {
+                        'accept': 'application/json',
+                        'Client-ID': process.env.CLIENT_ID,
+                        'Authorization': process.env.AUTHORIZATION
+                    }
+                };
+
+                try {
+                    const res = await axios
+                    .request(options);
+                    console.log('this is the returned data', res.data);
+                    return res.data;
+                } catch(e) {
+                    console.error(e);
+                }
+                
+            }
         },
-        // newreleases: async ( parent, { games }) => {
-        //     const response = await apicalypse(igdbRequest)
-        //     .fields(['id,name,first_release_date,cover,rating,summary,hypes'])
-        //     .sort('name', 'desc')
-        //     .limit(10)
-        //     .where(`hypes > 100`)
-        //     .where(`first_release_date > ${march}`)
-        //     .request('/games');
-        //     console.log(response.data);
-        //     return response.data
-        // },
+       getNewRelease : async (parent, { games }, context) => {
+
+       }
 
     },
 
@@ -86,7 +110,7 @@ const resolvers = {
             const token = signToken(profile);
             return { token, profile };
         },
-        // this saveGame needs lots of editing
+        // this saveGame  may need lots of editing
         saveGame: async (parent, { userId, game }, context) => {
             if (context.user) {
                 const game = await User.findOneAndUpdate(

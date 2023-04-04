@@ -27,7 +27,12 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    savedGames: [Game],
+    savedGames: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Game',
+      }
+    ],
   },
   {
     toJSON: {
