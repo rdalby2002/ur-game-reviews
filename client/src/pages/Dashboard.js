@@ -1,27 +1,21 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
-import { Routes, Route } from 'react-router-dom';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 import TopRated from '../pages/TopRated';
 
 function Dashboard() {
     return (
         <>
-            <main className="">
-                <div> <Navbar /> </div>
-            </main>
-            <div>
-               
-                
-                    <Routes>
-                        <Route
-                            exact path="/"
-                            element={<TopRated />}
-                        />
-                    </Routes>
-            
-               
-            </div>
+            <Row>
+                <Col sm={4}>
+                    <Navbar />
+                </Col>
+                <Col sm={8}>
+                    
+                </Col>
+            </Row>
         </>
     );
 }
