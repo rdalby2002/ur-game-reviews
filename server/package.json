@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/graphql-type-json": "^0.3.2",
     "apicalypse": "^0.2.0",
     "apollo-server-express": "^3.12.0",
     "axios": "^1.3.4",
