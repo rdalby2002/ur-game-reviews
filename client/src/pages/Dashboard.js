@@ -2,18 +2,18 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
-import TopRated from '../pages/TopRated';
+import Welcome from '../assets/images/welcome.png'
 
 function Dashboard() {
     return (
         <>
             <Row>
-                <Col sm={4}>
+                <Col sm={3}>
                     <Navbar />
                 </Col>
-                <Col sm={8}>
-                    
+                <Col sm={9}>
+                    <img className='welcome' alt='welcome' src={Welcome}></img>
+                
                 </Col>
             </Row>
         </>
