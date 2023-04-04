@@ -77,7 +77,7 @@ export const newReleases = async () => {
     return response.data;
 };
 
-export const saveBook = (gameData, token) => {
+export const saveGame = (gameData, token) => {
     return fetch('/api/users', {
       method: 'PUT',
       headers: {
@@ -89,7 +89,7 @@ export const saveBook = (gameData, token) => {
   };
   
   // remove saved book data for a logged in user
-  export const deleteBook = (gameId, token) => {
+  export const deleteGame = (gameId, token) => {
     return fetch(`/api/users/games/${gameId}`, {
       method: 'DELETE',
       headers: {
