@@ -3,10 +3,8 @@ import { GET_ME, getSavedGameIds } from "../utils/queries";
 import Auth from '../utils/Auth';
 import Button from 'react-bootstrap/Button';
 import { Card, Row, Col } from 'react-bootstrap';
-import { SAVE_GAME } from "../utils/mutations";
-import { useMutation } from '@apollo/client';
-import { newGames } from "../data";
 import Navbar from "../components/Navbar";
+
 
 function NewReleases() {
 
