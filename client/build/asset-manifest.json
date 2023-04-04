@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.3f5953e4.css",
+    "main.js": "/static/js/main.c1efc503.js",
+    "static/js/787.9475bd96.chunk.js": "/static/js/787.9475bd96.chunk.js",
+    "static/media/gamingbackdrop1.jpg": "/static/media/gamingbackdrop1.9e369e2c8881c3238c39.jpg",
+    "static/media/welcome.png": "/static/media/welcome.58c96192a7917b1707f7.png",
+    "static/media/urglogo1.png": "/static/media/urglogo1.b79fccd7515bc4bd32b6.png",
+    "index.html": "/index.html",
+    "main.3f5953e4.css.map": "/static/css/main.3f5953e4.css.map",
+    "main.c1efc503.js.map": "/static/js/main.c1efc503.js.map",
+    "787.9475bd96.chunk.js.map": "/static/js/787.9475bd96.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3f5953e4.css",
+    "static/js/main.c1efc503.js"
+  ]
+}

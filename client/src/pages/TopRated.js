@@ -1,37 +1,71 @@
 import React from "react";
 import { QUERY_NEW } from "../utils/queries";
 import Auth from '../utils/Auth';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation, useState } from '@apollo/client';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import apicalypse from 'apicalypse';
+import { SAVE_GAME} from '../utils/mutations';
 
 function TopRated() {
 
   const { loading, data } = useQuery(QUERY_NEW);
   const topRated = data?.topRated || [];
+    const [savedGameIds, setSavedGameIds] = useState(getSavedGameIds());
 
-  const token = Auth.loggedIn() ? Auth.getToken() : null;
+ //Use the Apollo useMutation() Hook to execute the SAVE_BOOK mutation in the handleSaveBook() function instead of the saveBook() function imported from the API file.
+ const [saveGame] = useMutation (SAVE_GAME)
+  
+ // set up useEffect hook to save `savedBookIds` list to localStorage on component unmount
+  // learn more here: https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup
+  useEffect(() => {
+    return () => saveGameIds(savedGameIds);
+  });
 
-  if (!token) {
-    return false;
-  }
+   const handleSavGame = async (gameId) => {
+    const gameToSave = topRated.find((game) => game.gameId === gameId);
 
-  if (loading) {
+    // get token
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    if (!token) {
+      return false;
+    }
+     if (loading) {
     return <h2>LOADING...</h2>;
   }
-  
+   try {
+      const response = await saveGame(gameToSave, token);
+
+      if (!response.ok) {
+        throw new Error('something went wrong!');
+      }
+      setSavedGameIds([...savedGameIds, gameToSave.gameId]);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+
   return (
   <section id="toprated">
     <div>
     <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top">{topRated}</Card.Img>
+      <Card.Img src={game.cover} alt={`The cover for ${game.name}`} variant="top">{topRated}</Card.Img>
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
+        <Card.Title>{game.name}</Card.Title>
         <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+          {game.description}
         </Card.Text>
-        <Button variant="dark">Go somewhere</Button>
+        {Auth.loggedIn() && (
+        <Button variant="dark"
+        disabled={savedGameIds?.some((savedGameId) => savedGameId === game.gameId)}
+                        className='btn-block btn-info'
+                        onClick={() => handleSaveGame(game.gameId)}>
+                        {savedGameIds?.some((savedGameId) => savedGameId === game.gameId)
+                          ? 'This game has already been saved!'
+                          : 'Save this Game!'}</Button>
+                          )}
       </Card.Body>
     </Card>
 

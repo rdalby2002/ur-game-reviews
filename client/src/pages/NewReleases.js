@@ -2,11 +2,7 @@ import React, { useEffect, useState } from "react";
 import { GET_ME } from "../utils/queries";
 import Auth from '../utils/Auth';
 import Button from 'react-bootstrap/Button';
-import { Card, Row } from 'react-bootstrap';
-import SavedGames from "./SavedGames";
-import { getSavedGameIds } from "../utils/LocalStorage";
-import { SAVE_GAME, } from "../utils/mutations";
-import { useMutation } from '@apollo/client';
+import Card from 'react-bootstrap/Card';
 
 
 function NewReleases() {
