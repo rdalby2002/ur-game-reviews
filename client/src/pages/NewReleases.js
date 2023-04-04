@@ -4,6 +4,7 @@ import Auth from '../utils/Auth';
 import { useQuery } from '@apollo/client';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import apicalypse from 'apicalypse';
 
 
 function NewReleases() {
