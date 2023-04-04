@@ -9,7 +9,12 @@ const coverSchema = new Schema(
         type: String,
         required: true
     },
-    game: [Game]
+    game: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Game',
+        }
+    ]
     },
     {
         toJSON: {

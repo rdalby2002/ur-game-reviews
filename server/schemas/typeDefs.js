@@ -2,28 +2,28 @@ const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
   type User {
-    _id: ID!
-    username: String!
-    email: String!
-    firstName: String!
-    lastName: String!
+    _id: ID
+    username: String
+    email: String
+    firstName: String
+    lastName: String
     gameCount: Int
     savedGames: [Game]
   }
   
   type Game {
-    _id: ID!
-    name: String!
-    summary: String!
+    _id: ID
+    name: String
+    summary: String
     cover: [Cover]
     hypes: Int
     first_release_date: String
-    rating: Int!
+    rating: Int
   }
 
   type Cover {
-    _id: ID!
-    url: String!
+    _id: ID
+    url: String
   }
 
   input GameInput {
@@ -44,8 +44,8 @@ const typeDefs = gql`
     me: User
     users: User
     user: User
-    topratedgames: [String]
-    newreleases: [String]
+    getTopRated: [String]
+    getNewRelease: [String]
   }
 
   type Mutation {

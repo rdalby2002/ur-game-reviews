@@ -34,6 +34,7 @@ export const QUERY_NEW = gql`
         name
         first_release_date
         summary
+        hypes
       }
     }
 `;

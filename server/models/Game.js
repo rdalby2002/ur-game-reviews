@@ -10,7 +10,12 @@ const gameSchema = new Schema({
     type: String,
     required: true,
   },
-  cover: [Cover],
+  cover: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Cover',
+    }
+  ],
   hypes: {
     type: Number,
   },

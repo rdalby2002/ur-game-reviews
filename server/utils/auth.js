@@ -30,14 +30,10 @@ module.exports = {
         const payload = { email, name, password };
         return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
     },
-    igdbRequest:  async function (email, password) {
+    igdbRequest:  async function (games) {
         let requestOptions = await axios({
             method: 'get',
             url: 'https://api.igdb.com/v4/games',
-            auth: {
-                email: email,
-                password: token.password
-            },
             headers: {
                 'accept': 'application/json',
                 'Client_ID': process.env.CLIENT_ID,
@@ -51,30 +47,7 @@ module.exports = {
         // .catch(error => {
         //     return error;
         // });
-        // const requestOptions =  {
-        //     method: 'url',
-        //     baseURL: 'https://api.igdb.com/v4',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Client_ID': process.env.CLIENT_ID,
-        //         'Authorization': process.env.AUTHORIZATION 
-        //     },
-        //     responseType: 'json',
-        //     timeout: 1000,
-        //     auth: {
-        //     email: token.email,
-        //     password: token.password
-        //     },
-        // };
         
-        // will need to really work on getting this api request right
-        // const response = await apicalypse(requestOptions)
-        // may need to use slug as well as name in case we use em for URL requests
-        // .fields(['id,name,first_release_date,cover,rating,summary'])
-        // .sort('name', 'desc')
-        // .search(`${game}`)
-        // .request('/games');
-        
-        // return response 
+       
     }
 };
