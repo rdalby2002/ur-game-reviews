@@ -5,6 +5,7 @@ const { signToken, igdbRequest } = require('../utils/auth');
 const axios = require('axios');
 const { request } = require('express');
 const { response } = require('express');
+const apicalypse = require('apicalypse').default;
 
 // const { QUERY_TOPGAMES, QUERY_NEW } = require('../../client/src/utils/queries');
 // const topRatedQuery = {
@@ -59,30 +60,71 @@ const resolvers = {
         // apicalypse has a multiquery to maybe help with covers 
         getTopRated: async (parent, args, context) => {
             // may need to use 'slug' for url requests
-            if (context.user) { 
-                const options = {
-                    method: 'post',
-                    url: 'https://api.igdb.com/v4/games',
-                    headers: {
-                        'accept': 'application/json',
-                        'Client-ID': process.env.CLIENT_ID,
-                        'Authorization': process.env.AUTHORIZATION
-                    }
-                };
+            // if (context.user) { 
+            //     const options = {
+            //         method: 'post',
+            //         url: 'https://api.igdb.com/v4/games',
+            //         headers: {
+            //             'accept': 'application/json',
+            //             'Client-ID': process.env.CLIENT_ID,
+            //             'Authorization': process.env.AUTHORIZATION
+            //         }
+            //     };
 
-                try {
-                    const res = await axios
-                    .request(options);
-                    console.log('this is the returned data', res.data);
-                    return res.data;
-                } catch(e) {
-                    console.error(e);
-                }
+            //     try {
+            //         const res = await axios
+            //         .request(options);
+            //         console.log('this is the returned data', res.data);
+            //         return res.data;
+            //     } catch(e) {
+            //         console.error(e);
+            //     }
                 
-            }
+            // }
+            const options = {
+                queryMethod: 'body',
+                method: 'post',
+                baseURL: 'https://api.igdb.com/v4',
+                headers: {
+                    'Accept': 'application/json',
+                    'Client-ID': process.env.CLIENT_ID,
+                    'Authorization': process.env.AUTHORIZATION
+                },
+                responseType: 'json',
+                timeout: 1000,
+            };
+    
+            const response = await apicalypse(options)
+            .fields('name,hypes,cover,summary,rating')
+            .limit(15)
+            .where('rating > 90')
+            .request('/games');
+    
+    
+            return response.data;
         },
-       getNewRelease : async (parent, { games }, context) => {
+       getNewRelease : async (parent, args, context) => {
+        const options = {
+            queryMethod: 'body',
+            method: 'post',
+            baseURL: 'https://api.igdb.com/v4',
+            headers: {
+                'Accept': 'application/json',
+                'Client-ID': process.env.CLIENT_ID,
+                'Authorization': process.env.AUTHORIZATION
+            },
+            responseType: 'json',
+            timeout: 1000,
+        };
 
+        const response = await apicalypse(options)
+        .fields('name,hypes,cover,summary,first_release_date')
+        .limit(15)
+        .where('hypes > 20')
+        .request('/games');
+
+
+        return response.data;
        }
 
     },
@@ -111,19 +153,13 @@ const resolvers = {
             return { token, profile };
         },
         // this saveGame  may need lots of editing
-        saveGame: async (parent, { userId, game }, context) => {
-            if (context.user) {
-                const game = await User.findOneAndUpdate(
-                    { _id: userId },
-                    {
-                        $addToSet: { games: game },
-                    },
-                    {
-                        new: true,
-                        runValidators: true,
-                    }
-                );
-            }
+        saveGame: async (parent, { gameId, name, summary, first_release_date, cover, rating }, context) => {
+           const updatedUser = await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $addToSet: {savedGames: {gameId, name, summary, first_release_date, cover, rating} } },
+            { new: true, runValidators: true }
+           );
+           return updatedUser;
         },
         removeGame: async (parent, { gameId }, context) => {
             if (context.user) {

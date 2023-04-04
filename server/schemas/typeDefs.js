@@ -1,6 +1,9 @@
 const { gql } = require('apollo-server-express');
+const { GraphQLJSON, GraphQLJSONObject } = require('graphql-type-json');
 
-const typeDefs = gql`
+const typeDefs = `#graphql
+    scalar JSON
+    scalar JSONObject
   type User {
     _id: ID
     username: String
@@ -44,8 +47,8 @@ const typeDefs = gql`
     me: User
     users: User
     user: User
-    getTopRated: [String]
-    getNewRelease: [String]
+    getTopRated: JSON
+    getNewRelease: JSON
   }
 
   type Mutation {
