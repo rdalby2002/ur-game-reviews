@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/ur-game-reviews/static/css/main.daff473c.css",
+    "main.js": "/ur-game-reviews/static/js/main.ddd1a35b.js",
+    "static/js/787.9475bd96.chunk.js": "/ur-game-reviews/static/js/787.9475bd96.chunk.js",
+    "static/media/gamingbackdrop1.jpg": "/ur-game-reviews/static/media/gamingbackdrop1.9e369e2c8881c3238c39.jpg",
+    "static/media/welcome.png": "/ur-game-reviews/static/media/welcome.58c96192a7917b1707f7.png",
+    "static/media/urglogo1.png": "/ur-game-reviews/static/media/urglogo1.b79fccd7515bc4bd32b6.png",
+    "index.html": "/ur-game-reviews/index.html",
+    "main.daff473c.css.map": "/ur-game-reviews/static/css/main.daff473c.css.map",
+    "main.ddd1a35b.js.map": "/ur-game-reviews/static/js/main.ddd1a35b.js.map",
+    "787.9475bd96.chunk.js.map": "/ur-game-reviews/static/js/787.9475bd96.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.daff473c.css",
+    "static/js/main.ddd1a35b.js"
+  ]
+}
