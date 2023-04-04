@@ -1,0 +1,26 @@
+[
+    {
+        
+        "name": "Roblox",
+        "summary": "Roblox allows players to create their own games using its proprietary engine, Roblox Studio, which can then be played by other users.",
+        "cover": "https://play-lh.googleusercontent.com/WNWZaxi9RdJKe2GQM3vqXIAkk69mnIl4Cc8EyZcir2SKlVOxeUv9tZGfNTmNaLC717Ht",
+        "first_release_date": "September 1, 2006",
+        "rating": "4/5"
+    },
+    {
+        
+        "name": "Fortnite",
+        "summary": "players collaborate to survive in an open-world environment, by battling other characters who are controlled either by the game itself, or by other players",
+        "cover": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsbfZmtn1Gr46TQJbXszfAks9v3E0xRxrfiSZ-Ej_3&s",
+        "first_release_date": "September 26, 2017",
+        "rating": "3/5"
+    },
+    {
+        
+        "name": "Minecraft",
+        "summary": "players explore a blocky, procedurally generated, three-dimensional world with virtually infinite terrain and may discover and extract raw materials, craft tools and items, and build structures, earthworks, and machines.",
+        "cover": "https://upload.wikimedia.org/wikipedia/en/5/51/Minecraft_cover.png",
+        "first_release_date": "November 18, 2011",
+        "rating": "5/5"
+    }
+]

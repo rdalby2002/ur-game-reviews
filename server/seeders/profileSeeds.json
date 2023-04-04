@@ -1,0 +1,41 @@
+[
+    {
+      "name": "Luis Chevere",
+      "email": "luis@example.com",
+      "password": "test01",
+      "savedGames": "Minecraft, Roblox"
+    },
+    {
+      "name": "Cristian Castillo",
+      "email": "cristian@example.com",
+      "password": "test02",
+      "savedGames": "Minecraft, Roblox"
+    },
+    {
+      "name": "Vanessa Mendez",
+      "email": "vanessa@example.com",
+      "password": "test03",
+      "savedGames": "Fortnite, Roblox"
+    },
+    {
+      "name": "Ryan Dalby",
+      "email": "ryan@example.com",
+      "password": "test04",
+      "savedGames": "Roblox"
+    },
+    {
+      "name": "Edward V. Berard",
+      "email": "evberard@techfriends.dev",
+      "password": "password05",
+      "savedGames": "Minecraft, Roblox"
+    },
+    {
+      "name": "Alan Kay",
+      "email": "akay@techfriends.dev",
+      "password": "password06",
+      "savedGames": "Minecraft, Roblox"
+
+    }
+ 
+  ]
+  
