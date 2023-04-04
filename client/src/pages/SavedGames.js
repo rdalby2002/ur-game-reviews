@@ -7,7 +7,6 @@ import {
   Row,
 } from 'react-bootstrap';
 
-import Navbar from '../components/Navbar';
 import { GET_ME } from '../utils/queries';
 import { REMOVE_GAME } from '../utils/mutations'
 import { useQuery, useMutation } from '@apollo/react-hooks';
