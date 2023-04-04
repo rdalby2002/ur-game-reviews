@@ -2,6 +2,7 @@
   "name": "ur-game-reviews",
   "version": "0.1.0",
   "private": true,
+  "homepage":"https://rdarly2002.github.oi/ur-game-review/",
   "dependencies": {
     "@apollo/client": "^3.7.10",
     "@apollo/react-hooks": "^4.0.0",
@@ -16,17 +17,20 @@
     "bootstrap": "^5.2.3",
     "dotenv": "^16.0.3",
     "graphql": "^16.6.0",
+    "gh-pages": "^5.0.0",
     "jwt-decode": "^3.1.2",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",
     "react-dom": "^18.2.0",
     "react-jumbotron": "^0.1.1",
     "react-router-dom": "^6.9.0",
-    "react-scripts": "5.0.1",
+    "react-scripts": "4.0.3",
     "react-social-icons": "^5.15.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "node server/server.js",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
@@ -52,7 +56,7 @@
     ]
   },
   "devDependencies": {
-    "concurrently": "^5.1.0",
+    "concurrently": "^5.3.0",
     "eslint-plugin-react-hooks": "^4.6.0"
   }
 }
