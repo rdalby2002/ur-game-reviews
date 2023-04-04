@@ -50,9 +50,9 @@ const SavedGames = () => {
   }
 
   return (
-    <div> 
-      <Navbar />
+      
     <>
+    <section id='#savedgames'>
       <div fluid className='text-light bg-dark'>
         <Container>
           <h1>Viewing favorites list!</h1>
@@ -84,9 +84,8 @@ const SavedGames = () => {
           })}
         </Row>
       </Container>
+      </section>
     </>
-
-    </div>
   );
 };
 
