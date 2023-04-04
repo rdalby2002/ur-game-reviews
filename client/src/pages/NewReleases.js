@@ -1,42 +1,92 @@
-import React from "react";
-import { QUERY_NEW } from "../utils/queries";
+import React, { useEffect, useState } from "react";
+import { GET_ME } from "../utils/queries";
 import Auth from '../utils/Auth';
-import { useQuery } from '@apollo/client';
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import { Card, Row } from 'react-bootstrap';
+import SavedGames from "./SavedGames";
+import { getSavedGameIds } from "../utils/LocalStorage";
+import { SAVE_GAME, } from "../utils/mutations";
+import { useMutation } from '@apollo/client';
 
 
 function NewReleases() {
 
-  const { loading, data } = useQuery(QUERY_NEW);
-  const newReleases = data?.newReleases || [];
+  const [savedGameIds, setSavedGameIds] = useState(getSavedGameIds());
 
-  const token = Auth.loggedIn() ? Auth.getToken() : null;
+  const saveGame = useMutation(SAVE_GAME)
 
-  if (!token) {
-    return false;
-  }
+  useEffect(() => {
+    return () => getSavedGameIds(savedGameIds)
+  })
 
-  if (loading) {
-    return <h2>LOADING...</h2>;
-  }
-  
+  const handleSaveGame = async (gameId) => {
+    const gameTosave = NewReleases.find((game) => game.gameId === gameId);
+
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    if (!token) {
+      return false;
+    }
+
+    try {
+      await saveGame({
+        variables: { game: gameTosave },
+        update: cache => {
+          const { me } = cache.readQuery({ query: GET_ME });
+
+          cache.writeQuery({ query: GET_ME, data: { me: { ...me, SavedGames: [...me.SavedGames], gameTosave } } })
+        }
+      });
+
+      setSavedGameIds([...savedGameIds, gameTosave.gameId]);
+    } catch (err) {
+      console.error(err);
+    }
+
+    //  const { loading, data } = useQuery(QUERY_NEW);
+    // const newReleases = data?.newReleases || [];
+
+    // if (loading) {
+    //   return <h2>LOADING...</h2>;
+    // }
+
+  };
+
   return (
-    <div id='#newreleases'>
+    <>
+      <div id='#newreleases'>
 
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top">{newReleases}</Card.Img>
-      <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button variant="dark">Go somewhere</Button>
-      </Card.Body>
-    </Card>
+        <Row>
+          {NewReleases.map((game) => {
+            return (
+              <Card style={{ width: '18rem' }} key={game.gameId}>
+                {game.cover ? (
+                  <Card.Img src={game.cover} alt={`Cover for ${game.name}`} variant='top' />
+                ) : null}
+                <Card.Body>
 
-    </div>
+                  <Card.Title>{game.name}</Card.Title>
+                  <Card.Text>
+                    {game.summary}
+                  </Card.Text>
+                  {Auth.loggedIn() && (
+                    <Button
+                      disabled={SavedGames?.some((getSavedGameIds) => getSavedGameIds === game.gameId)}
+                      variant='dark'
+                      onClick={() => handleSaveGame(game.gameId)}>
+                      {savedGameIds?.some((savedGameId) => savedGameId === game.gameId)
+                        ? 'This book has already been saved!'
+                        : 'Save this Book!'}
+                    </Button>
+                  )}
+                </Card.Body>
+              </Card>
+            );
+          })}
+        </Row>
+
+      </div>
+    </>
   );
 }
 
