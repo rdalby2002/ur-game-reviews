@@ -12,13 +12,13 @@ function Navbar() {
 
   return (
     <Nav className="navinfo">
-      <a href="#toprated" > 
+      <a href="/toprated" > 
         <img className="pslogos" alt="square" src={Square}></img>
         Top Rated</a>
-      <a href="#newreleases">
+      <a href="/newreleases">
       <img className="pslogos" alt="triangle" src={Triangle}></img>
         New Releases</a>
-      <a href="#favorites">
+      <a href="/savedgames">
       <img className="pslogos" alt="circle" src={Circle}></img>
         Favorites</a>
       <a href="/">

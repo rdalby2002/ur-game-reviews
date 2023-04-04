@@ -33,7 +33,7 @@ function LoginForm() {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({ "form-name": "test", username, password }),
     })
-      .then(() => alert("Message sent!"))
+      .then(() => alert("Logged in!"))
       .catch((error) => alert(error));
   }
 
