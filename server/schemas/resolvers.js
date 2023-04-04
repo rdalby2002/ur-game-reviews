@@ -59,6 +59,30 @@ const resolvers = {
         // will need to add another request for the covers to get the image url
         // apicalypse has a multiquery to maybe help with covers 
         getTopRated: async (parent, args, context) => {
+
+            // may need to use 'slug' for url requests
+            // if (context.user) { 
+            //     const options = {
+            //         method: 'post',
+            //         url: 'https://api.igdb.com/v4/games',
+            //         headers: {
+            //             'accept': 'application/json',
+            //             'Client-ID': process.env.CLIENT_ID,
+            //             'Authorization': process.env.AUTHORIZATION
+            //         }
+            //     };
+
+            //     try {
+            //         const res = await axios
+            //         .request(options);
+            //         console.log('this is the returned data', res.data);
+            //         return res.data;
+            //     } catch(e) {
+            //         console.error(e);
+            //     }
+                
+            // }
+
             const options = {
                 queryMethod: 'body',
                 method: 'post',
@@ -81,7 +105,7 @@ const resolvers = {
     
             return response.data;
         },
-       getNewRelease: async (parent, args, context) => {
+getNewRelease: async (parent, args, context) => {
         const options = {
             queryMethod: 'body',
             method: 'post',
