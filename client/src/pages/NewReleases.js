@@ -4,7 +4,7 @@ import Auth from '../utils/Auth';
 import { useQuery } from '@apollo/client';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import Navbar from "../components/Navbar";
+
 
 function NewReleases() {
 
@@ -22,7 +22,7 @@ function NewReleases() {
   }
   
   return (
-    <div> <Navbar /> 
+    <div id='#newreleases'>
 
     <Card style={{ width: '18rem' }}>
       <Card.Img variant="top">{newReleases}</Card.Img>
