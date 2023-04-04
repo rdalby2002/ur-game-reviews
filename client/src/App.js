@@ -77,7 +77,7 @@ function App() {
                 element={<NewReleases />}
               />
               <Route 
-              path='/saved' 
+              path='/savedgames' 
               element={<SavedGames />} 
              />     
             </Routes>
